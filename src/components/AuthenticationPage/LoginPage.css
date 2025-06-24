@@ -1,0 +1,262 @@
+.login-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.main-content {
+  width: 100%;
+  max-height: 964px;
+}
+
+.login-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.login-feature-section {
+  flex: 1;
+  max-width: 50%;
+  height: 964px;
+  background: #F2F2F2;
+}
+
+.feature-section {
+  padding-right: 2rem;
+}
+
+.feature-row {
+  margin: 0;
+}
+
+.feature-box-container {
+  padding: 1rem;
+}
+
+.feature-box {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.login-form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fff;
+  flex: 1;
+  max-width: 50%;
+  height: 964px;
+  padding: 2rem;
+  padding-top: 120px;
+  padding-left: 100px;
+}
+
+/* Animation classes */
+.animate-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.animate-center {
+  animation: slideInCenter 1s ease-out forwards;
+}
+
+.animate-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInCenter {
+  from {
+    transform: translateX(-50px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Feature box styling */
+.feature-box-txt {
+  margin-top: 1.5rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .login-feature-section,
+  .login-form-section {
+    flex: 0 0 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 0;
+  }
+  
+  .login-form-section {
+    order: 2;
+    align-items: center;
+  }
+  
+  .login-feature-section {
+    order: 1;
+    padding-bottom: 1rem;
+  }
+  
+  .feature-box {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile-specific adjustments - Hide feature carousel */
+@media (max-width: 768px) {
+  .main-content {
+    max-height: none;
+  }
+  
+  .login-container {
+    background: #fff;
+    /* padding-top: 43px; */
+    padding-bottom: 30px;
+    flex-direction: column;
+    min-height: 100vh !important;
+  }
+  
+  .login-feature-section {
+    display: none; /* Hide feature carousel */
+  }
+  
+  .login-form-section {
+    max-width: 100%;
+    height: auto;
+    min-height: calc(100vh - 60px); /* Full height minus header */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0;
+    padding: 43px 30px 0;
+  }
+
+  .register-form-container {
+    padding: 43px 30px 0;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  
+  .login-title {
+    color: #333;
+    font-family: var(--FontFamily, Inter);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+  }
+  
+  .remember-me {
+    width: auto;
+  }
+  
+  .forgot-password {
+    width: auto;
+    text-align: left;
+    align-self: stretch;
+  }
+}
+
+.feature-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.feature-img-1,
+.feature-img-2,
+.feature-img-3 {
+  width: 40px;
+  height: 40px;
+}
+
+.feature-img-logo1,
+.feature-img-logo2,
+.feature-img-logo3 {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.feature-title {
+  flex: 1;
+}
+
+.feature-title-txt {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.feature-body {
+  color: #666;
+  line-height: 1.6;
+}
+
+.learn-more {
+  margin-top: 1rem;
+}
+
+.learn-more-txt {
+  color: #007bff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.learn-more-txt img {
+  width: 16px;
+  height: 16px;
+}
+
+.learn-more-txt:hover {
+  color: #0056b3;
+}

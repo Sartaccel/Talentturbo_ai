@@ -1,0 +1,376 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 630px;
+  background-color: #0f598a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 0 60px;
+  overflow: hidden;
+}
+
+.hero-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-text {
+  margin: 0 auto 40px;
+  max-width: 800px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.form-item {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  height: 60px !important;
+  padding: 10px 18px 10px 44px !important;
+  margin: 0 !important;
+  border-radius: 10px !important;
+  background: #FFF !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  overflow: hidden;
+}
+
+/* First form item (search) */
+.search-bar > .form-item:first-child {
+  width: 300px !important;
+  min-width: 300px !important;
+  height: 60px !important;
+}
+
+/* Second form item (location) */
+.search-bar > .form-item:nth-child(2) {
+  width: 200px !important;
+  min-width: 200px !important;
+  height: 60px !important;
+  /* border-radius: 0 !important; */
+}
+
+/* Third form item (experience) */
+.search-bar > .form-item:nth-child(3) {
+  width: 200px !important;
+  min-width: 200px !important;
+  height: 60px !important;
+  /* border-radius: 0 !important; */
+}
+
+.form-item:focus-within {
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(25, 147, 227, 0.2);
+}
+
+.form-icon {
+  position: absolute;
+  left: 18px;
+  width: 20px;
+  height: 20px;
+  color: #6c757d;
+  transition: color 0.2s ease;
+}
+
+.form-item:focus-within .form-icon {
+  color: #1993E3;
+}
+
+.find-jobs-btn {
+  display: flex !important;
+  width: 160px !important;
+  min-width: 160px !important;
+  height: 60px !important;
+  padding: 11px 20px !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 0px solid #74B3DD;
+  background: #1993E3;
+  border-radius: 0 10px 10px 0 !important;
+  cursor: pointer;
+  margin: 0;
+  white-space: nowrap;
+  color: #FFF !important;
+  font-family: Inter !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: normal !important;
+}
+
+.find-jobs-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(25, 147, 227, 0.2);
+}
+
+.btn-icon {
+  width: 24px !important;
+  height: 24px !important;
+}
+/* Desktop styles */
+@media (min-width: 769px) {
+  /* .search-bar {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    max-width: 1000px !important;
+    padding: 0 16px !important;
+    margin: 40px auto 0 !important;
+    flex-wrap: nowrap !important;
+  } */
+
+  .hero-section {
+    padding: 0 !important;
+  }
+
+  .hero-title{
+    margin: 152px 0 10px 0;
+  }
+
+  .form-item {
+    position: relative;
+    display: flex;
+    height: 60px;
+    padding: 10px 18px 10px 44px;
+    align-items: center;
+    gap: 8px;
+    flex: none !important;
+    border-radius: 10px;
+    background: #FFF;
+    margin: 0 8px 0 0;
+  }
+
+  .form-control, .form-select{
+    border: none !important;
+  }
+  .search-bar{
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  /* First form item (search) */
+  .form-item:first-child {
+    width: 300px;
+    border-radius: 10px 0 0 10px !important;
+    border-right: 1px solid #D0D4DC !important;
+  }
+  
+  /* Second form item (location) */
+  .form-item:nth-child(2) {
+    width: 200px;
+    border-right: 1px solid #D0D4DC !important;
+    border-radius: 0 !important;
+  }
+  
+  /* Third form item (experience) */
+  .form-item:nth-child(3) {
+    width: 200px;
+    border-radius: 0 !important;
+  }
+  
+  .form-item:first-child {
+    border-radius: 10px 0 0 10px !important;
+  }
+  
+  .form-item:last-child {
+    border-radius: 10px;
+  }
+  
+  .form-item:last-child {
+    margin-right: 0;
+  }
+
+  .form-item:last-child {
+    border-right: none;
+  }
+
+  .form-icon {
+    left: 12px;
+  }
+
+  .find-jobs-btn {
+    display: flex !important;
+    width: 160px !important;
+    height: 60px !important;
+    padding: 11px 37px 11px 35px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    border: 0px solid #74B3DD !important;
+    background: #1993E3 !important;
+  }
+
+
+
+  .search-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23333333' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 24px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .hero-title{
+    padding-top: 64px !important;
+    color: #FFF;
+    font-family: var(--FontFamily, Inter);
+    font-size: 26px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .hero-section {
+    padding: 0 30px 57px 30px;
+  }
+
+  .hero-text {
+    text-align: left;
+    padding: 0;
+    margin: 0 ;
+  }
+
+  .hero-subtitle {
+    color: #FFF;
+    text-align: left;
+    font-family: var(--FontFamily, Inter);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 35px;
+  }
+
+  .search-bar{
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* .search-bar {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0;
+  } */
+
+  /* .search-bar {
+    flex-direction: column;
+    gap: 12px;
+  } */
+
+  .form-item {
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px 0 48px;
+    height: 60px;
+    width: 100%;
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Reset specific widths on mobile */
+  .search-bar > .form-item:first-child,
+  .search-bar > .form-item:nth-child(2),
+  .search-bar > .form-item:nth-child(3) {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .search-bar > .form-item:first-child{
+    border-radius: 10px 10px 0 0 !important;
+    border-bottom: 1px solid #D0D4DC !important;
+  }
+
+  .search-bar > .form-item:nth-child(2){
+    border-bottom: 1px solid #D0D4DC !important;
+    border-radius: 0 !important;
+  }
+
+  .search-bar > .form-item:nth-child(3){
+    border-radius: 0 !important;
+  }
+
+  /* Form controls */
+  .search-input,
+  .search-select,
+  .form-control,
+  .form-select {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    color: #333 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  /* Remove default dropdown arrow for select */
+  .search-select {
+    background-image: none !important;
+  }
+
+  .search-input::placeholder {
+    color: #999;
+  }
+  
+  .find-jobs-btn {
+    width: 100% !important;
+    height: 52px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    border-radius: 0 0 10px 10px !important;
+    border: 0px solid #74B3DD !important;
+    background: #1993E3 !important;
+  }
+
+
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+
+  .search-bar {
+    gap: 14px;
+  }
+}

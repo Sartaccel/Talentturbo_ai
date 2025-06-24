@@ -1,0 +1,201 @@
+.ctaSection {
+    margin: 100px 150px 50px 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ctaContainer {
+    width: 100%;
+    height: 250px;
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 14px;
+    background: radial-gradient(64.36% 115% at 50% 3%, #4B4B4B 0%, #111 100%);
+    box-sizing: border-box;
+}
+
+.ctaContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+}
+
+.ctaVisual {
+    flex-shrink: 0;
+}
+
+.rocketContainer {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: none;
+    height: 100%;
+}
+
+.rocketIcon {
+    width: 565.705px;
+    height: 358.814px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    margin-left: -100px;
+    margin-top: -75px;
+}
+
+.ctaText {
+    width: 440px;
+    height: 154px;
+}
+
+.ctaTitle {
+  color: #FFF;
+  font-family: var(--FontFamily, Inter);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 44px;
+}
+
+.ctaDescription {
+  color: #FFF;
+  text-align: center;
+  font-family: var(--FontFamily, Inter);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.ctaButton {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    height: 46px;
+    width: 169px;
+    border: none;
+    color: #FFF;
+    font-family: var(--FontFamily, Inter);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border-radius: 4px;
+    padding: 7px 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+}
+
+.ctaButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+.arrowIcon {
+    transition: transform 0.3s ease;
+}
+
+.ctaButton:hover .arrowIcon {
+    transform: translateX(4px);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+  
+  .cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  
+  .cta-visual {
+    flex-shrink: 0;
+  }
+  
+  .rocket-container {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+  }
+  
+  .rocket-icon {
+    color: white;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+  
+  .cta-text {
+    max-width: 500px;
+  }
+  
+  .cta-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    background: linear-gradient(45deg, #fff, #93c5fd);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .cta-description {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+  
+  .cta-button {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+  } 
+  
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+  }
+
+  .arrowIcon {
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button:hover .arrowIcon {
+    transform: translateX(4px);
+  }

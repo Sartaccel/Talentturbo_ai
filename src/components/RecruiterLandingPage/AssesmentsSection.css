@@ -1,0 +1,179 @@
+.assessments-section {
+    background: white;
+  }
+  
+  .assessments-content {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 100px;
+    justify-content: space-between;
+  }
+
+  .assessments-content-wrapper {
+    align-items: center;
+    margin: 0 150px;
+    box-sizing: border-box;
+  }
+  
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 14px;
+  }
+  
+  .section-title {
+    align-self: stretch;
+    color: #1A1A1A;
+    font-family: var(--FontFamily, Inter);
+    font-size: 30px !important;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 44px;
+    margin: 0 !important;
+    height: 88px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .assessments-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .section-description {
+    color: #4D4D4D; 
+    font-family: var(--FontFamily, Inter);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    width: 526px;
+    height: 104px;
+  }
+  
+  .job-rounds-panel {
+    display: flex;
+    width: 444px;
+    height: 444px;
+    padding: 40px 40px 0px 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid #E6E6E6;
+    background: radial-gradient(92.95% 92.95% at 45.05% 11.82%, #7FC4FC 0%, #CDE8FE 100%);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .rounds-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px !important;
+    /* min-width: 300px; */
+    width: 100%;
+    margin: 0;
+  }
+  
+  /* .round-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .round-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+   */
+  .round-header {
+    display: flex;
+    padding: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    height: 74px;
+    align-self: stretch;
+    border-radius: 10px 10px 0 0;
+    background: #FFF;
+  }
+  
+  .round-title {
+    color: #1A1A1A;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .round-name {
+    color: #1A1A1A;
+    font-family: var(--FontFamily, Inter);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .round-due {
+    display: flex;
+    padding: 10px;
+    height: 37px;
+    align-items: center;
+    gap: 6px;
+    align-self: stretch;
+    background: #F2F2F2;
+    border-radius: 0 0 10px 10px;
+    color: #1A1A1A;
+    font-family: var(--FontFamily, Inter);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .interviewers-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .interviewers-stats {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    gap: 14px;
+  }
+
+  .stats-title {
+    align-self: stretch;
+    color: #1A1A1A;
+    font-family: var(--FontFamily, Inter);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 44px;
+    width: 526px;
+    height: 88px;
+    } 
+    
+    .stats-description {
+        align-self: stretch;
+        color: #4D4D4D;
+        font-family: var(--FontFamily, Inter);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
+        width: 526px;
+        height: 104px;
+    }

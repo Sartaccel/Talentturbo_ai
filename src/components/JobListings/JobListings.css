@@ -1,0 +1,151 @@
+
+/* Job Listings Component Styles */
+.job-listings-container {
+  width: 100%;
+  background: #F2F2F2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jobs-grid {
+  width: 100%;
+}
+
+.job-listings {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.job-cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Search Section */
+.search-section {
+  width: 100%;
+  background: #FFF;
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Form Items */
+.jl-form-item {
+  height: 44px !important;
+  margin: 0 !important;
+  background: #F2F2F2 !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  overflow: hidden;
+  color: #808080 !important;
+  font-family: Inter !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+}
+
+.form-icon {
+  position: absolute;
+  left: 15px;
+  width: 16px;
+  height: 16px;
+  color: #6C757D;
+}
+
+/* Form Controls */
+.form-control,
+.form-select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+}
+
+.form-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Buttons */
+.jl-find-jobs-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 140px;
+  padding: 0 25px;
+  border: none;
+  border-radius: 0 8px 8px 0 !important;
+  background: #1993E3;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.jl-find-jobs-btn:hover {
+  background-color: #157BC1;
+}
+
+/* Job Cards */
+.job-card {
+  background: #FFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 12px;
+}
+
+.job-card:hover,
+.job-card.selected {
+  border-color: #1993E3;
+  background-color: #F8FBFE;
+}
+
+/* Job Details Panel */
+.job-details-panel {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Utility Classes */
+.skill-tag {
+  display: inline-block;
+  background-color: #F3F4F6;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}

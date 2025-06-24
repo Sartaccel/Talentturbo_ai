@@ -1,0 +1,125 @@
+
+
+/* Header Styles for Services Page */
+.about-header.custom-navbar {
+    background-color: #F2F2F2 !important;
+    height: 60px;
+    padding: 0 150px !important;
+}
+
+.about-header .nav-menu {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.about-header .nav-link {
+    color: #191919 !important;
+    text-align: center;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    position: relative;
+    padding: 0 0 8px 0;
+    margin: 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.about-header .nav-link:hover,
+.about-header .nav-link.active {
+    color: #191919;
+    transform: translateY(-5px);
+    background: none !important;
+}
+
+.about-header .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background-color: #1993E3;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.about-header .nav-link:hover::after,
+.about-header .nav-link.active::after {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.about-header .nav-link.active::after {
+    transform: translateX(-50%) translateY(10px);
+    width: 100%;
+}
+
+.about-header .brand-text {
+    color: #1993E3 !important;
+}
+
+/* Services Container */
+.services-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 150px 120px 150px;
+    flex-wrap: wrap;
+    gap: 135px;
+}
+
+.services-item {
+    display: flex;
+    flex-direction: row;
+    min-width: 250px;
+    border-radius: 5px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.services-item img {
+    width: 100%;
+    height: 100%;
+}
+
+.services-item-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    color: #1A1A1A;
+    font-family: var(--FontFamily, Inter);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 44px; 
+}
+
+.services-item-description {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    color: #4D4D4D;
+    font-family: var(--FontFamily, Inter);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+.services-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 526px;
+    height: 214px;
+}
+
