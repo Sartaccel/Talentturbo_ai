@@ -35,7 +35,7 @@ function Navbar() {
         </div>
         
         <div className={styles['navbar-right']}>
-          <a href="/login" className={styles['login-link']}>Recruiter Login</a>
+          <a href="/recruiter/login" className={styles['login-link']}>Recruiter Login</a>
         </div>
       </div>
     </nav>

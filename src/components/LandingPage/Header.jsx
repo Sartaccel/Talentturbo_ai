@@ -3,12 +3,11 @@ import { Navbar, Container, Button, Offcanvas } from 'react-bootstrap';
 import { useLocation, Link, useNavigate, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import '../styles/Header.css';
-import searchIcon from '../../assets/Images/AboutUs/SearchIcon.svg';
 import searchIconDark from '../../assets/Images/AboutUs/SearchIconDark.svg';
 import person from '../../assets/Images/MobileResponsive/person.svg';
 import SearchIcon from '../../assets/Images/MobileResponsive/SearchIcon.svg';
 
-const Header = ({ isLoginPage = false }) => {
+const Header = ({ isLoginPage = false, userType = 'candidate' }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 992);
@@ -51,20 +50,26 @@ const Header = ({ isLoginPage = false }) => {
   };
 
   const handleLogin = () => {
-    navigate('/login');
+    const path = userType === 'recruiter' ? '/recruiter/login' : '/login';
+    navigate(path);
     setShowMobileMenu(false);
   };
 
   const handleRegister = () => {
-    navigate('/register');
+    const path = userType === 'recruiter' ? '/recruiter/register' : '/register';
+    navigate(path);
     setShowMobileMenu(false);
   };
+  
+  // Determine if we're in a recruiter auth page
+  const isRecruiterAuth = location.pathname.startsWith('/recruiter/');
+  const effectiveUserType = isRecruiterAuth ? 'recruiter' : userType;
 
   const isJobsPage = location.pathname === '/' || location.pathname === '/jobs';
   const isAboutPage = location.pathname === '/about';
   const isServicesPage = location.pathname === '/services';
   const isContactusPage = location.pathname === '/contactus';
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+  const isAuthPage = location.pathname.includes('/login') || location.pathname.includes('/register');
 
   return (
     <>
@@ -86,7 +91,7 @@ const Header = ({ isLoginPage = false }) => {
               className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
               onClick={() => setShowMobileMenu(false)}
             >
-              <img src={searchIcon} alt="Search" className="mobile-nav-icon" />
+              <img src={searchIconDark} alt="Search" className="mobile-nav-icon" />
               <span>Search</span>
             </NavLink>
             <NavLink 
@@ -160,7 +165,7 @@ const Header = ({ isLoginPage = false }) => {
               to="/" 
               className={`navbar-brand ${location.pathname === '/' ? 'landing-brand' : 'other-page-brand'}`}
               style={{
-                color: location.pathname === '/' ? '#CFCFCF' : '#1993E3',
+                color: '#1993E3',
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '16px',
                 fontWeight: 800,
@@ -179,7 +184,7 @@ const Header = ({ isLoginPage = false }) => {
                 className="mobile-icon-btn"
                 onClick={() => navigate('/jobs')}
               >
-                <img src={SearchIcon} alt="Search" className="mobile-header-icon" />
+                <img src={searchIconDark} alt="Search" className="mobile-header-icon" />
               </Button>
               <Button 
                 variant="link" 
@@ -200,7 +205,7 @@ const Header = ({ isLoginPage = false }) => {
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''} ${location.pathname === '/' ? 'landing-nav' : ''}`}
               >
                 <img 
-                  src={isAboutPage || isServicesPage || isJobsPage || isAuthPage || isContactusPage ? searchIconDark : searchIcon} 
+                  src={searchIconDark} 
                   alt="Search" 
                   className="nav-icon"
                 />

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import './RegisterForm.css';
+import './RecruiterRegisterForm.css';
 import googleIcon from '../../assets/Images/LoginPage/Googleicon.svg';
 
-const RegisterForm = () => {
+const RecruiterRegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [credentials, setCredentials] = useState({
     fullName: '',
@@ -139,4 +139,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default RecruiterRegisterForm;

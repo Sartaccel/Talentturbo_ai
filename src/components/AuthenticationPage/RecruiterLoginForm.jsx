@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import './LoginForm.css';
+import './RecruiterLoginForm.css';
 import ForgotPassword from './ForgotPassword';
 import googleIcon from '../../assets/Images/LoginPage/Googleicon.svg';
 import otpIcon from '../../assets/Images/LoginPage/OTPkeyicon.svg';
 
-const LoginForm = () => {
+const RecruiterLoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -34,7 +34,7 @@ const LoginForm = () => {
 
   return (
     <div className="login-form-container">
-      <h2 className="login-title">Login</h2>
+      <h2 className="login-title">Recruiter Login</h2>
       <div className="alternative-login">
         <div className="auth-options">
           <button className="google-auth">
@@ -123,4 +123,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RecruiterLoginForm;

@@ -2,7 +2,7 @@ import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Categories.css'
 import categorieslogo from '../../assets/Images/Categories/jobs.svg'
-import jobService from '../../services/jobService'
+import jobService from '../../services/jobService.js'
 
 const Categories = () => {
   const navigate = useNavigate();

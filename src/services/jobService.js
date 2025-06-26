@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // API base URL - update this to match your backend URL
-const API_BASE_URL = 'http://localhost:8181/api'; // Include /api in the base URL
+const API_BASE_URL = 'http://localhost:8181/api';
 
 // Create API instance with default config
 const API = axios.create({
@@ -15,83 +15,68 @@ const API = axios.create({
   timeout: 30000, // 30 second timeout
   validateStatus: function (status) {
     // Don't reject on HTTP status codes
-    return status >= 200 && status < 500; // Resolve only if the status code is less than 500
+    return status >= 200 && status < 500;
   }
 });
 
-// Add a request interceptor to handle errors
+// Request interceptor
 API.interceptors.request.use(
   config => {
+    // Add any request headers or tokens here if needed
     return config;
   },
-  error => {
-    console.error('Request error:', error);
-    return Promise.reject(error);
-  }
+  error => Promise.reject(error)
 );
 
-// Add a response interceptor to handle errors
+// Response interceptor
 API.interceptors.response.use(
-  response => {
-    return response;
-  },
+  response => response,
   error => {
-    if (error.response) {
-      console.error('Response error:', error.response.data);
-    } else if (error.request) {
-      console.error('Request error:', error.request);
-    } else {
-      console.error('Error:', error.message);
-    }
+    console.error('API Response Error:', error);
     return Promise.reject(error);
   }
 );
 
 const jobService = {
-  // Fetch public job listings
-  getPublicJobListings: async function(searchParams = {}) {
+  /**
+   * Fetches job listings with filtering and pagination
+   * @param {Object} params - Query parameters
+   * @param {number} [params.page=0] - Page number (0-based)
+   * @param {number} [params.size=10] - Number of items per page
+   * @param {string} [params.search] - Search term for job title/description
+   * @param {string} [params.location] - Location filter
+   * @param {number} [params.experience] - Years of experience
+   * @param {string} [params.employmentType] - Employment type
+   * @param {string} [params.jobType] - Job type
+   * @returns {Promise<{success: boolean, jobs: Array, pagination: Object, error?: string}>}
+   */
+  getPublicJobListings: async function(params = {}) {
     try {
-      const { 
-        search = '', 
-        location = '', 
-        experience = '', 
-        page = 0, 
+      const {
+        page = 0,
         size = 10,
-        jobTitle = '',
-        employmentType = '',
-        jobType = ''
-      } = searchParams;
-      
-      console.log('Fetching public job listings with params:', { 
-        search, 
-        location, 
-        experience, 
-        page, 
-        size,
-        jobTitle,
+        search,
+        location,
+        experience,
         employmentType,
-        jobType
-      });
-      
-      // Prepare request body according to API documentation
+        jobType,
+      } = params;
+
+      // Build request body for the backend
       const requestBody = {
-        page: Number(page),
-        size: Number(size)
+        page: Math.max(0, parseInt(page, 10)),
+        size: Math.min(100, Math.max(1, parseInt(size, 10))),
+        ...(search && { searchText: search }),
+        ...(location && { location }),
+        ...(experience !== undefined && { experience: parseInt(experience, 10) }),
+        ...(employmentType && { employmentType }),
+        ...(jobType && { jobType })
       };
-      
-      // Add optional filters if provided
-      if (search) requestBody.jobTitle = search;
-      if (location) requestBody.location = location;
-      if (experience) requestBody.experience = Number(experience);
-      if (jobTitle) requestBody.jobTitle = jobTitle;
-      if (employmentType) requestBody.employmentType = employmentType;
-      if (jobType) requestBody.jobType = jobType;
-      
-      const requestUrl = `${API_BASE_URL}/v1/jobresource/public/joblist`;
-      console.log('Sending POST request to:', requestUrl);
-      console.log('Request body:', JSON.stringify(requestBody, null, 2));
-      
-      const response = await fetch(requestUrl, {
+
+      const apiUrl = `${API_BASE_URL}/v1/jobresource/public/joblist`;
+      console.log('Fetching jobs from:', apiUrl);
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -99,9 +84,7 @@ const jobService = {
         },
         body: JSON.stringify(requestBody)
       });
-      
-      console.log('API Response Status:', response.status);
-      
+
       if (!response.ok) {
         let errorData;
         try {
@@ -110,49 +93,46 @@ const jobService = {
         } catch (e) {
           console.error('Failed to parse error response:', e);
         }
-        
         throw new Error(errorData?.message || `HTTP error! status: ${response.status}`);
       }
-      
+
       const responseData = await response.json();
-      console.log('API Response Data:', responseData);
+      console.log('Raw API Response:', JSON.stringify(responseData, null, 2));
       
-      // Handle different possible response formats
-      let jobs = [];
-      let pagination = {};
-      
-      if (Array.isArray(responseData)) {
-        jobs = responseData;
-      } else if (responseData.content) {
-        // Handle Spring Data Page format
-        jobs = responseData.content || [];
-        pagination = {
-          page: responseData.number,
-          size: responseData.size,
-          totalPages: responseData.totalPages,
-          totalElements: responseData.totalElements
-        };
-      } else if (responseData.jobs) {
-        // Handle custom format with jobs array
-        jobs = responseData.jobs || [];
-        pagination = responseData.pagination || {};
+      if (!responseData.jobs || !Array.isArray(responseData.jobs)) {
+        console.error('Invalid response format - jobs array not found');
+        throw new Error('Invalid response format: jobs array not found');
       }
-      
+
+      // Log first job before mapping
+      if (responseData.jobs.length > 0) {
+        console.log('First job before mapping:', JSON.stringify(responseData.jobs[0], null, 2));
+      }
+
+      // Map the backend response to frontend format
+      const jobs = responseData.jobs.map((job, index) => {
+        const mappedJob = this.mapJobResponse(job);
+        console.log(`Job ${index} after mapping:`, JSON.stringify(mappedJob, null, 2));
+        return mappedJob;
+      });
+
+      const pagination = responseData.pagination || {
+        page: parseInt(page, 10),
+        size: parseInt(size, 10),
+        totalPages: 1,
+        totalElements: jobs.length
+      };
+
       return {
         success: true,
-        jobs: jobs,
-        pagination: pagination
+        jobs,
+        pagination
       };
-      
+
     } catch (error) {
       console.error('Error in getPublicJobListings:', {
         message: error.message,
-        stack: error.stack,
-        ...(error.response && {
-          status: error.response.status,
-          statusText: error.response.statusText,
-          data: error.response.data
-        })
+        stack: error.stack
       });
       
       return { 
@@ -162,307 +142,99 @@ const jobService = {
       };
     }
   },
-  
-  // Map backend response to frontend format
+
+  /**
+   * Maps backend job data to frontend format
+   * @param {Object} job - Job data from backend
+   * @returns {Object} Mapped job data
+   */
   mapJobResponse: function(job) {
+    if (!job) {
+      console.error('mapJobResponse called with null/undefined job');
+      return null;
+    }
+    console.log('Mapping job with ID:', job.id || 'unknown');
+    
+    // Format experience for display
+    const experienceDisplay = job.experience 
+      ? `${job.experience} ${job.expType || 'Years'}`
+      : 'Experience not specified';
+    
+    // Format salary for display
+    let displaySalary = '';
+    if (job.salary) {
+      displaySalary = job.salary;
+    } else if (job.minSalary || job.maxSalary) {
+      const min = job.minSalary ? `${job.currency || '₹'}${job.minSalary.toLocaleString()}` : '';
+      const max = job.maxSalary ? `${job.currency || '₹'}${job.maxSalary.toLocaleString()}` : '';
+      displaySalary = min && max ? `${min} - ${max}` : min || max;
+    }
+
+    // Map all required fields
     return {
-      id: job.id,
-      jobTitle: job.job_title || job.jobTitle || 'N/A',
-      clientName: job.client_name || job.clientName || 'N/A',
-      company: job.company_name || job.company || 'N/A',
-      location: job.location || 'N/A',
-      technology: job.technology || (job.skills ? job.skills.join(',') : 'N/A'),
-      workType: job.work_type || job.workType || 'N/A',
-      createdDate: job.created_date || job.postedDate || 'N/A',
-      jobStatus: job.status || 'N/A',
-      experience: job.experience || 'N/A',
-      salary: job.salary || 'N/A',
-      minSalary: job.min_salary || 'N/A',
-      maxSalary: job.max_salary || 'N/A',
-      currency: job.currency || '',
-      payFrequency: job.pay_frequency || '',
-      industryName: job.industry_name || job.industryName || 'N/A',
-      position: job.position || 'N/A',
-      jobCode: job.job_code || job.jobCode || 'N/A',
-      dueDate: job.due_date || job.dueDate || 'N/A',
-      vacancies: job.vacancies || 'N/A',
-      description: job.job_description || job.description || 'N/A'
+      // Core job information
+      id: job.id?.toString() || '',
+      jobId: job.id, // Keep original ID as number
+      jobTitle: job.job_Title || job.jobTitle || 'No Title',
+      title: job.job_Title || job.jobTitle || 'No Title',
+      
+      // Company information
+      company: job.company_Name || job.company || 'Company Not Specified',
+      companyName: job.company_Name || job.company || 'Company Not Specified',
+      clientName: job.client_Name || '',
+      industryName: job.industry_Name || '',
+      
+      // Job details
+      position: job.position || '',
+      eligibility: job.eligibility || '',
+      experience: job.experience || 'Experience not specified',
+      experienceValue: job.experience || 0,
+      expType: job.expType,
+      
+      // Salary information
+      salary: displaySalary,
+      minSalary: job.minSalary || 0,
+      maxSalary: job.maxSalary || 0,
+      currency: job.currency || '₹',
+      payFrequency: job.payFrequency || '',
+      
+      // Location and type
+      location: job.location || 'Location Not Specified',
+      vacancies: job.vacancies || '',
+      workType: job.work_Type || job.workType || 'Full-time',
+      employmentType: job.employee_Type || job.employmentType || 'Permanent',
+      
+      // Dates
+      dueDate: job.due_Date || job.dueDate || '',
+      createdDate: job.createdDate || new Date().toISOString(),
+      updatedDate: job.updatedDate || new Date().toISOString(),
+      
+      // Descriptions and requirements
+      jobDescription: job.job_Description || job.jobDescription || '',
+      jobRequirement: job.job_Requirement || job.jobRequirement || '',
+      documentsRequired: job.documentsRequired || '',
+      
+      // Status and type
+      status: job.status || 0,
+      jobType: job.jobType || '',
+      isActive: job.isActive !== undefined ? job.isActive : true,
+      isDeleted: job.isDeleted || false,
+      
+      // Additional fields for UI
+      jobCode: job.job_Code || job.jobCode || '',
+      
+      // For backward compatibility with existing components
+      rating: job.rating || 0,
+      reviews: job.reviews || 0,
+      shift: job.shift || 'Mon - Sat, 9:00AM - 6:00PM',
+      skills: job.skills || [],
+      
+      // Don't include original job properties to avoid overwriting mapped fields
+      // ...job
     };
   },
 
-  // Get hot jobs (matches the older version's loadsjobs function)
-  getHotJobs: async function() {
-    try {
-      const data = { location: "", salary: "", workAuthorizationData: "" };
-      const response = await API.post("/jobresource/get/hotjob", data);
-      
-      if (response.data.status === true) {
-        return {
-          status: true,
-          showdata: true,
-          isNoData: false,
-          jobs: response.data.jobs
-        };
-      } else if (response.data.status === false) {
-        return {
-          status: false,
-          showdata: true,
-          isNoData: true,
-          jobs: []
-        };
-      }
-    } catch (error) {
-      console.error("Error fetching hot jobs:", error);
-      throw error;
-    }
-  },
-
-  // Get jobs by category
-  getJobsByCategory: async function(category, filterData = {}) {
-    try {
-      const data = {
-        ...filterData,
-        category: category,
-        status: 1 // Active jobs only
-      };
-
-      console.log('Fetching jobs with data:', data);
-      const response = await API.post('/api/v1/jobresource/public/joblist', data);
-      
-      console.log('API Response:', response.data);
-      
-      if (response.data && response.data.status) {
-        const mappedJobs = response.data.jobs ? response.data.jobs.map(job => ({
-          id: job.id,
-          jobTitle: job.jobTitle || job.job_title || 'N/A',
-          clientName: job.clientName || job.client_name || 'N/A',
-          company: job.company || job.company_name || 'N/A',
-          location: job.location || 'N/A',
-          technology: job.technology || (job.skills ? job.skills.join(', ') : 'N/A'),
-          workType: job.workType || job.work_type || 'N/A',
-          experience: job.experience || 'N/A',
-          salary: job.salary || 'N/A',
-          minSalary: job.min_salary || job.minSalary || 'N/A',
-          maxSalary: job.max_salary || job.maxSalary || 'N/A',
-          currency: job.currency || '',
-          payFrequency: job.pay_frequency || job.payFrequency || 'N/A',
-          description: job.job_description || job.description || 'N/A',
-          createdDate: job.created_date || job.createdDate || 'N/A',
-          dueDate: job.due_date || job.dueDate || 'N/A',
-          jobStatus: job.status || 'N/A',
-          industryName: job.industry_name || job.industryName || 'N/A',
-          position: job.position || 'N/A',
-          jobCode: job.job_code || job.jobCode || 'N/A',
-          vacancies: job.vacancies || 'N/A'
-        })) : [];
-
-        return {
-          status: true,
-          showdata: true,
-          isNoData: mappedJobs.length === 0,
-          jobs: mappedJobs
-        };
-      } else {
-        console.warn('API returned non-success status:', response.data);
-        return {
-          status: false,
-          showdata: true,
-          isNoData: true,
-          jobs: [],
-          message: response.data?.message || 'Failed to fetch jobs'
-        };
-      }
-    } catch (error) {
-      console.error("Error fetching jobs by category:", error);
-      if (error.response) {
-        console.error('Response error:', error.response.data);
-      } else if (error.request) {
-        console.error('Request error:', error.request);
-      } else {
-        console.error('Error:', error.message);
-      }
-      throw error;
-    }
-  },
-
-  // Get country list (matches the older version)
-  getCountryList: async function() {
-    try {
-      const response = await API.get("/commonresource/countrylist");
-      return response.data.countrylist;
-    } catch (error) {
-      console.error("Error fetching country list:", error);
-      throw error;
-    }
-  },
-
-  // Get work authorization list (matches the older version)
-  getWorkAuthorizationList: async function() {
-    try {
-      const response = await API.get("/settingsresource/settingworkauthorization/list/all");
-      return response.data.settingsWorkAuthorization.map(x => ({
-        label: x.workAuthorizationName,
-        value: x.id
-      }));
-    } catch (error) {
-      console.error("Error fetching work authorization list:", error);
-      throw error;
-    }
-  },
-
-  // Get hot candidates (matches the older version's loadcandidates function)
-  getHotCandidates: async function() {
-    try {
-      const data = { location: "", workAuthorization: [] };
-      const response = await API.post("/candidateresource/get/tech/hotcandidate", data);
-      
-      if (response.data && response.data.recordinfo) {
-        return {
-          status: true,
-          candshowdata: true,
-          candisNoData: false,
-          candidates: response.data.recordinfo
-        };
-      } else {
-        return {
-          status: false,
-          candshowdata: true,
-          candisNoData: true,
-          candidates: []
-        };
-      }
-    } catch (error) {
-      console.error("Error fetching hot candidates:", error);
-      throw error;
-    }
-  },
-
-  // Search jobs with category filtering
-  searchJobs: async function(searchQuery, locationQuery, experienceLevel, category = '') {
-    console.log('[jobService] Using mock data instead of API');
-    
-    // Generate sample data based on search parameters
-    const generateSampleJobs = (count = 5) => {
-      const titles = [
-        'Senior Software Engineer',
-        'Frontend Developer',
-        'Backend Developer',
-        'Full Stack Developer',
-        'UI/UX Designer',
-        'DevOps Engineer',
-        'Product Manager'
-      ];
-      
-      const companies = [
-        'TechCorp',
-        'DevSolutions',
-        'WebCraft',
-        'CodeMasters',
-        'DigitalHive'
-      ];
-      
-      const locations = ['Remote', 'Bangalore', 'Mumbai', 'Delhi', 'Hyderabad'];
-      const skillsList = [
-        ['JavaScript', 'React', 'Node.js'],
-        ['Python', 'Django', 'PostgreSQL'],
-        ['Java', 'Spring Boot', 'Microservices'],
-        ['React', 'TypeScript', 'Redux'],
-        ['AWS', 'Docker', 'Kubernetes']
-      ];
-      
-      return Array.from({ length: count }, (_, i) => ({
-        id: `job-${i + 1}`,
-        title: titles[Math.floor(Math.random() * titles.length)],
-        company: companies[Math.floor(Math.random() * companies.length)],
-        location: locations[Math.floor(Math.random() * locations.length)],
-        salary: `₹${Math.floor(Math.random() * 10 + 5)},00,000 - ₹${Math.floor(Math.random() * 10 + 10)},00,000`,
-        description: `This is a sample job description for the ${titles[Math.floor(Math.random() * titles.length)]} position.`,
-        postedDate: new Date(Date.now() - Math.floor(Math.random() * 30) * 24 * 60 * 60 * 1000).toISOString(),
-        skills: skillsList[Math.floor(Math.random() * skillsList.length)]
-      }));
-    };
-    
-    // Generate sample companies
-    const generateSampleCompanies = (count = 3) => {
-      const companyNames = [
-        'TechCorp',
-        'DevSolutions',
-        'WebCraft',
-        'CodeMasters',
-        'DigitalHive'
-      ];
-      
-      const locations = ['Bangalore', 'Mumbai', 'Delhi', 'Hyderabad', 'Pune'];
-      
-      return companyNames.slice(0, count).map((name, i) => ({
-        id: `company-${i + 1}`,
-        name,
-        logo: '/src/assets/Images/JobListings/briefcase.svg',
-        description: `${name} is a leading technology company specializing in software development and IT solutions.`,
-        location: locations[Math.floor(Math.random() * locations.length)],
-        jobsAvailable: Math.floor(Math.random() * 10) + 1
-      }));
-    };
-    
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    // Return mock data
-    const jobs = generateSampleJobs(8);
-    const companies = generateSampleCompanies(4);
-    
-    // Filter based on search query if provided
-    const filteredJobs = searchQuery 
-      ? jobs.filter(job => 
-          job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          job.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          job.skills.some(skill => skill.toLowerCase().includes(searchQuery.toLowerCase()))
-        )
-      : jobs;
-    
-    // Filter based on location if provided
-    const locationFilteredJobs = locationQuery
-      ? filteredJobs.filter(job => 
-          job.location.toLowerCase().includes(locationQuery.toLowerCase())
-        )
-      : filteredJobs;
-    
-    console.log('[jobService] Generated mock data:', {
-      jobs: locationFilteredJobs.length,
-      companies: companies.length,
-      searchQuery,
-      locationQuery,
-      experienceLevel,
-      category
-    });
-    
-    return {
-      status: true,
-      showdata: true,
-      isNoData: locationFilteredJobs.length === 0 && companies.length === 0,
-      jobs: locationFilteredJobs,
-      companies,
-      _debug: {
-        status: 'mock_data',
-        jobsCount: locationFilteredJobs.length,
-        companiesCount: companies.length
-      }
-    };
-  }
+  // Add other job-related service methods here as needed
 };
 
-export default jobService;
-//   //     const response = await axios.get(`${API_BASE_URL}/settingsresource/settingworkauthorization/list/all`);
-//   //     return response.data.settingsWorkAuthorization.map(x => ({
-//   //       label: x.workAuthorizationName,
-//   //       value: x.id
-//   //     }));
-//   //   } catch (error) {
-//   //     console.error("Error fetching work authorization list:", error);
-//   //     throw error;
-//   //   }
-//   // }
-  
-// };
-
-// export default jobService;
+export { jobService as default };

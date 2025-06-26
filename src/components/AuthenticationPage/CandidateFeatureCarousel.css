@@ -1,45 +1,38 @@
-.login-feature-carousel-container {
+.candidate-feature-carousel-container {
   position: relative;
-  height: 380px;
   flex-shrink: 0;
   margin-top: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   overflow: hidden;
+  padding-top: 20px;
+  height: 400px;
 }
 
 .login-feature-carousel-item {
   position: absolute;
-  left: 0;
   width: 100%;
   height: 100%;
-  margin-left: 210px;
   opacity: 0;
-  transform: translateX(-100%);
-  transition: all 2s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(550px);
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-feature-slide-left:nth-child(1),
-.login-feature-slide-left:nth-child(2),
-.login-feature-slide-left:nth-child(3) {
-  animation: slideLeft 2s;
-  animation-fill-mode: forwards;
+.login-feature-carousel-item.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
 }
 
-@keyframes slideLeft {
-  0% {
-    opacity: 1;
-    transform: translateX(550px);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(-550px);
-  }
+.login-feature-carousel-item.prev {
+  transform: translateX(-550px);
+  opacity: 0;
 }
 
 .login-feature-card {
@@ -48,7 +41,6 @@
   height: 334px;
   background: transparent;
   transition: transform 0.3s ease;
-  margin-bottom: 76px;
 }
 
 .login-feature-top-img {
@@ -66,16 +58,13 @@
   height: auto;
 }
 
-.login-feature-top-img.freelancer {
-  transform: translateX(13%);
-}
-
 .login-feature-content {
   width: 300px;
   height: 192px;
   padding-bottom: 30px;
   display: flex;
   flex-direction: column;
+  border-radius: 18px;
   gap: 20px;
   background: #FFF;
 }
@@ -85,11 +74,11 @@
   align-items: center;
   gap: 20px;
   padding-right: 20px;
-  border-radius: 0 18px 0 0;
   align-items: center;
   align-self: stretch;
   border-bottom: 1px solid #F0F0F0;
   background: #F7F7F7;
+  border-radius: 18px 18px 0 0;
 }
 
 .login-feature-icon {
@@ -114,6 +103,8 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin-bottom: 0;
+  align-items: center;
 }
 
 .login-feature-description {

@@ -3,7 +3,7 @@ import "./JobDescription.css";
 import { Bookmark, Calendar, MapPin, Clock, Briefcase, Building2, Users } from "lucide-react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap'
-import jobService from '../../services/jobService';
+import jobService from '../../services/jobService.js';
 import search from '../../assets/Images/HeroSection/search.svg'
 import findjobsearch from '../../assets/Images/HeroSection/Findjobsearch.svg'
 import locationinjoblist from '../../assets/Images/JobListings/location.svg'

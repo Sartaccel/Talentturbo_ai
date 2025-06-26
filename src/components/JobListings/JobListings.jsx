@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
-import jobService from '../../services/jobService';
+import jobService from '../../services/jobService.js';
 import './JobListings.css';
 import search from '../../assets/Images/HeroSection/search.svg';
 import findjobsearch from '../../assets/Images/HeroSection/Findjobsearch.svg';

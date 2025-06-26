@@ -4,7 +4,7 @@
   height: 780px;
   min-height: 100vh;
   flex-shrink: 0;
-  background: #F2F2F2;
+  background: #FFF;
 }
 
 .categories-section .section-title {
@@ -39,7 +39,7 @@
   overflow: hidden;
   width: 250px;
   height: 250px;
-  background: white;
+  background: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   cursor: pointer;
@@ -259,10 +259,6 @@ div h3:nth-child(6) {
     text-align: center;
     margin: 80px 23px 0 23px !important;
     /* padding: 0 20px; */
-  }
-
-  .category-circle::after {
-    animation: none;
   }
   
   .job-count {

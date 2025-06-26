@@ -8,11 +8,11 @@ import ResumeUpload from './components/LandingPage/ResumeUpload'
 // import ResumeUpload from './components/ResumeUpload/ResumeUpload'
 import Footer from './components/LandingPage/Footer'
 // import Job from './components/JobListings/JobCard'
-import JobListings from './components/JobListings/JobListings'
+import JobListings from './components/JobListings/JobListings'  
 import JobDescription from './components/JobDescriptionPage/JobDescription'
 import JobDetail from './components/JobDetail/JobDetail'
 import RecruiterPage from './components/RecruiterLandingPage/RecruiterPage'
-import LoginPage from './components/AuthenticationPage/LoginPage'
+import AuthPage from './components/AuthenticationPage/AuthPage'
 import AboutUs from './components/NavbarPages/AboutUs'
 import Services from './components/NavbarPages/Services'
 import ContactUs from './components/NavbarPages/ContactUs'
@@ -24,8 +24,10 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/recruiter" element={<RecruiterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<LoginPage />} />
+          <Route path="/login" element={<AuthPage userType="candidate" />} />
+          <Route path="/register" element={<AuthPage userType="candidate" />} />
+          <Route path="/recruiter/login" element={<AuthPage userType="recruiter" />} />
+          <Route path="/recruiter/register" element={<AuthPage userType="recruiter" />} />
           <Route path="/about" element={
             <>
               <Header />

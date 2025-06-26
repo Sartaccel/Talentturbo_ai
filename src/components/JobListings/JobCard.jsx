@@ -98,7 +98,7 @@ const JobCard = ({ job }) => {
           </div>
           <div className="meta-item" style={{ fontSize: '14px' }}>
             <img src={Salary} alt="Salary" width={14} height={14} />
-            <span>{displaySalary || 'Salary not specified'}</span>
+            <span> ₹{minSalary} - ₹{maxSalary}/year </span>
           </div>
           <div className="meta-item" style={{ fontSize: '14px' }}>
             <img src={Shift} alt="Shift" width={14} height={14} />
@@ -121,7 +121,7 @@ const JobCard = ({ job }) => {
 
         {/* Row 3 */}
         <div className="job-meta-row posted-row">
-          <span style={{ fontSize: '14px' }}>{daysAgo} days ago</span>
+          <span style={{ fontSize: '14px' }}>{postedDate}</span>
         </div>
       </div>
     </div>
