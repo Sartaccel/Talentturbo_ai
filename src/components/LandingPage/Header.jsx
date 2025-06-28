@@ -5,12 +5,11 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import '../styles/Header.css';
 import searchIconDark from '../../assets/Images/AboutUs/SearchIconDark.svg';
 import person from '../../assets/Images/MobileResponsive/person.svg';
-<<<<<<< HEAD
+ 
 import talentturbonavbarlogo from '../../assets/Images/TalentTurboNavbarLogo.png';
-=======
+ 
 import SearchIcon from '../../assets/Images/MobileResponsive/SearchIcon.svg';
->>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
-
+  
 const Header = ({ isLoginPage = false, userType = 'candidate' }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -78,11 +77,10 @@ const Header = ({ isLoginPage = false, userType = 'candidate' }) => {
   return (
     <>
       {/* Mobile Offcanvas Menu */}
-      <Offcanvas 
-        show={showMobileMenu} 
+      <Offcanvas
+        show={showMobileMenu}
         onHide={() => setShowMobileMenu(false)}
         className="mobile-offcanvas"
-<<<<<<< HEAD
         placement="start"
         style={{
           '--bs-offcanvas-width': '344px',
@@ -101,17 +99,11 @@ const Header = ({ isLoginPage = false, userType = 'candidate' }) => {
               <img src={talentturbonavbarlogo} alt="TalentTurbo Logo" className="mobile-offcanvas-logo" />
             </div>
           </div>
-=======
-        placement="end"
-      >
-        <Offcanvas.Header closeButton className="mobile-offcanvas-header">
-          <Offcanvas.Title>Menu</Offcanvas.Title>
->>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
         </Offcanvas.Header>
         <Offcanvas.Body className="mobile-offcanvas-body">
           <div className="mobile-nav-menu">
-            <NavLink 
-              to="/jobs" 
+            <NavLink
+              to="/jobs"
               state={{ fromSearch: true }}
               className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
               onClick={() => setShowMobileMenu(false)}
@@ -187,25 +179,10 @@ const Header = ({ isLoginPage = false, userType = 'candidate' }) => {
             {/* Logo/Brand - Visible on all screen sizes */}
             <Navbar.Brand 
               as={Link} 
-              to="/" 
-<<<<<<< HEAD
+              to="/"
               className={`navbar-brand ${location.pathname === '/' ? 'landing-brand' : 'other-page-brand'} brand-container`}
             >
-              <img src={talentturbonavbarlogo} alt="Logo" className="navbar-logo" /> 
-=======
-              className={`navbar-brand ${location.pathname === '/' ? 'landing-brand' : 'other-page-brand'}`}
-              style={{
-                color: '#1993E3',
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '16px',
-                fontWeight: 800,
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              TALENT TURBO
->>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
+              <img src={talentturbonavbarlogo} alt="Logo" className="navbar-logo" />
             </Navbar.Brand>
             
             {/* Mobile Icons - Only visible on mobile */}
@@ -273,10 +250,9 @@ const Header = ({ isLoginPage = false, userType = 'candidate' }) => {
               </Button>
               <Button 
                 onClick={handleRegister} 
-                variant={isJobsPage ? 'primary' : (isAboutPage || isServicesPage || isContactusPage) ? 'primary' : 'btn-primary'} 
+                variant="primary"
                 className={`signup-btn ${(isAboutPage || isServicesPage || isContactusPage) ? 'text-white' : ''}`}
               >
-                {/* {isLoginPage || isAboutPage || isServicesPage || isJobsPage || isContactusPage ? 'Register' : 'Signup'} */}
                 Register
               </Button>
             </div>

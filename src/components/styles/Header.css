@@ -191,7 +191,7 @@ body > div {
   opacity: 0.9;
 }
 
-<<<<<<< HEAD
+ 
 /* Navbar Logo Styles */
 .navbar-logo {
   width: 100%;
@@ -209,9 +209,8 @@ body > div {
   justify-content: center;
 }
 
-=======
->>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
-/* Signup Button */
+ 
+  /* Signup Button */
 .services-navbar .signup-btn {
   background: #1993E3 !important;
   color: #FFFFFF !important;
@@ -813,13 +812,13 @@ body > div {
 }
 
 /* Mobile Offcanvas Menu */
-<<<<<<< HEAD
-.mobile-offcanvas.offcanvas.offcanvas-start {
+.offcanvas.mobile-offcanvas.offcanvas-start {
     width: 344px !important;
     max-width: 100%;
     background-color: #ffffff;
     left: 0;
     right: auto;
+    border-right: 1px solid #e9ecef;
 }
 
 .mobile-offcanvas-header {
@@ -828,17 +827,18 @@ body > div {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    width: 344px;
+    max-width: 100%;
     background: white;
     z-index: 1050;
-}
-
-.mobile-offcanvas-header.offcanvas-header {
-    width: 344px !important;
+    height: 73px;
+    display: flex;
+    align-items: center;
 }
 
 .mobile-offcanvas-header .d-flex {
     width: 100%;
+    align-items: center;
 }
 
 .mobile-offcanvas-logo {
@@ -852,30 +852,15 @@ body > div {
     padding: 10px;
     background-size: 0.8em;
     margin-left: 0 !important;
-=======
-.mobile-offcanvas {
-    width: 280px !important;
-    max-width: 100%;
-    background-color: #ffffff;
-}
-
-.mobile-offcanvas-header {
-    padding: 16px;
-    border-bottom: 1px solid #e9ecef;
->>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
 }
 
 .mobile-offcanvas-body {
     padding: 0;
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD
     height: 100%;
     padding-top: 73px; /* Height of the header */
     overflow-y: auto;
-=======
-    height: calc(100% - 57px);
->>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
 }
 
 .mobile-nav-menu {
