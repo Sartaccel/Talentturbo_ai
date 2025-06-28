@@ -36,9 +36,14 @@ const HeroSection = () => {
     <div className="hero-wrapper">
       <div className="hero-content-wrapper">
         <Row className="align-items-center hero-content">
+<<<<<<< HEAD
           <Col lg={5} className="hero-text-col">
             <h1 className="hero-title">Discover Your Dream Job</h1>
             <p className="hero-subtitle">From entry-level positions to executive roles</p>
+=======
+          <Col lg={6} className="hero-text-col">
+            <h1 className="hero-title">Discover Your Dream Job <br /> From entry-level positions to executive roles</h1>
+>>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
           </Col>
           <Col lg={6} className="hero-image-col">
             <img src={herosection} alt="People working together" className="hero-image" />
@@ -48,17 +53,28 @@ const HeroSection = () => {
       
       <div className="search-form-wrapper">
         <div className="search-form-container">
+<<<<<<< HEAD
           <span className="search-jobs-title" style={{
+=======
+          <span style={{  
+>>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
             color: '#111928',
             fontFamily: 'var(--FontFamily, Inter)',
             fontSize: '16px',
             fontStyle: 'normal',
             fontWeight: '600',
             textAlign: 'center',
+<<<<<<< HEAD
             alignItems: 'center',
             justifyContent: 'flex-start',
             marginBottom: '20px'
           }}>Search Jobs</span>
+=======
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            marginBottom: '20px'}}>Search Jobs</span>
+>>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
           <Form className="search-form" onSubmit={handleSubmit}>
             <div className="search-bar">
               <div className="form-item">

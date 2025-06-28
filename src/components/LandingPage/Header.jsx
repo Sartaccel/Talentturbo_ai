@@ -5,7 +5,11 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import '../styles/Header.css';
 import searchIconDark from '../../assets/Images/AboutUs/SearchIconDark.svg';
 import person from '../../assets/Images/MobileResponsive/person.svg';
+<<<<<<< HEAD
 import talentturbonavbarlogo from '../../assets/Images/TalentTurboNavbarLogo.png';
+=======
+import SearchIcon from '../../assets/Images/MobileResponsive/SearchIcon.svg';
+>>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
 
 const Header = ({ isLoginPage = false, userType = 'candidate' }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -78,6 +82,7 @@ const Header = ({ isLoginPage = false, userType = 'candidate' }) => {
         show={showMobileMenu} 
         onHide={() => setShowMobileMenu(false)}
         className="mobile-offcanvas"
+<<<<<<< HEAD
         placement="start"
         style={{
           '--bs-offcanvas-width': '344px',
@@ -96,6 +101,12 @@ const Header = ({ isLoginPage = false, userType = 'candidate' }) => {
               <img src={talentturbonavbarlogo} alt="TalentTurbo Logo" className="mobile-offcanvas-logo" />
             </div>
           </div>
+=======
+        placement="end"
+      >
+        <Offcanvas.Header closeButton className="mobile-offcanvas-header">
+          <Offcanvas.Title>Menu</Offcanvas.Title>
+>>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
         </Offcanvas.Header>
         <Offcanvas.Body className="mobile-offcanvas-body">
           <div className="mobile-nav-menu">
@@ -177,9 +188,24 @@ const Header = ({ isLoginPage = false, userType = 'candidate' }) => {
             <Navbar.Brand 
               as={Link} 
               to="/" 
+<<<<<<< HEAD
               className={`navbar-brand ${location.pathname === '/' ? 'landing-brand' : 'other-page-brand'} brand-container`}
             >
               <img src={talentturbonavbarlogo} alt="Logo" className="navbar-logo" /> 
+=======
+              className={`navbar-brand ${location.pathname === '/' ? 'landing-brand' : 'other-page-brand'}`}
+              style={{
+                color: '#1993E3',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '16px',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                textDecoration: 'none',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              TALENT TURBO
+>>>>>>> 26aacc651f136c5ff759e733de8f8bfd65561dc4
             </Navbar.Brand>
             
             {/* Mobile Icons - Only visible on mobile */}
