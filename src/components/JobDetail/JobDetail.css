@@ -1,0 +1,240 @@
+/* JobDetail.css */
+
+.job-detail-container {
+    background-color: #f2f2f2;
+  }
+
+  .divider{
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    max-width: 1140px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+  } */
+  
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 24px;
+    align-self: flex-start;
+  }
+  
+  .job-description-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 32px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    max-width: 1140px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+  }
+
+  .otherdetails-card{
+    max-width: 1140px;
+    margin: 40px auto;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+  }
+  
+  .company-section {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .job-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .job-header img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1px solid #eee;
+  }
+  
+  .job-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+  }
+  
+  .job-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-top: 4px;
+  }
+  
+  .job-section {
+    border-radius: 12px;
+  }
+  
+  .job-section h3 {
+    padding-bottom: 12px;
+    color: #333;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .job-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 14px;
+    color: #4a4a4a;
+    line-height: 1.6;
+  }
+  
+  .job-info-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 24px;
+  }
+  
+  .job-info-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+    color: #666;
+  }
+  
+  .job-info-label img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+  
+  .job-info-value {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .skill-chip {
+    display: flex;
+    padding: 3px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    border: 1px solid #E6E6E6;
+    background: #F0F0F0;
+    color: #333;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 2px;
+  }
+  
+  .job-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+  }
+  
+  .job-list {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #444;
+    padding-left: 20px;
+  }
+  
+  .job-list li {
+    margin-bottom: 8px;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  
+  .apply-btn,
+  .refer-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .apply-btn {
+    background-color: #0366d6;
+    color: white;
+  }
+  
+  .apply-btn:hover {
+    background-color: #024ea2;
+  }
+  
+  .refer-btn {
+    background-color: #f4f4f4;
+    color: #0366d6;
+    border: 1px solid #0366d6;
+  }
+  
+  .refer-btn:hover {
+    background-color: #e1eefe;
+  }
+  
+  .similar-jobs-section .similar-job-card {
+    background: #f9f9f9;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .similar-job-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #222;
+  }
+  
+  .similar-job-info {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+  }
+  

@@ -1,0 +1,212 @@
+.company-profile {
+  padding-top: 100px;
+  padding: 100px 150px 0 150px;
+  background-color: #fff
+}
+
+.cp-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cp-info {
+  width: 526px; 
+  height: 206px;
+}
+
+.cp-title {
+  align-self: stretch;
+  color: #1A1A1A;
+  font-family: var(--FontFamily, Inter);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 44px;
+}
+
+.cp-description {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.cp-card {
+  width: 444px;
+  height: 444px;
+  background: radial-gradient(101.14% 101.14% at 9.8% 10.81%, #7FC4FC 0%, #CDE8FE 100%);
+  border-radius: 16px;
+  padding: 50px 0px 0px 50px;
+  overflow: hidden;
+}
+
+.cp-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 87px;
+}
+
+.cp-card-body {
+  padding: 10px 0 0 10px;
+  background-color: #CDE8FE;
+  border-radius: 16px 0 0 0;
+}
+
+.cp-card-details {
+  background-color: white;
+  border-radius: 16px 0 0 0;
+}
+
+.cp-logo {
+  background-color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-company-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 15px;
+  margin-left: 5px;
+  height: 87px;
+}
+
+.cp-company-name {
+  color: #333;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.cp-company-industry {
+  color: #333;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.cp-divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-top: 16px 0;
+}
+
+.cp-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 0 20px 30px;
+}
+
+.cp-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.cp-tabs {
+  display: flex;
+  gap: 10px;
+  padding: 12px 0 10px 12px;
+}
+
+.cp-tab {
+  cursor: pointer;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  border: 1px solid #D0D4DC;
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.cp-tab:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.cp-tab.active {
+  background-color: white;
+  color: #111827;
+}
+
+.cp-jobs {
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-job {
+  background-color: white;
+  height: 68px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.cp-job-logo {
+  margin-right: 12px;
+}
+
+.cp-job-info {
+  flex: 1;
+}
+
+.cp-job-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.cp-job-company {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.cp-job-location {
+  font-size: 0.8rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media (max-width: 1024px) {
+  .cp-content {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cp-content {
+    flex-direction: column;
+  }
+  
+  .cp-info {
+    text-align: center;
+  }
+}

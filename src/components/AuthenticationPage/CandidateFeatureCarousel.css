@@ -1,0 +1,119 @@
+.candidate-feature-carousel-container {
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 20px;
+  height: 400px;
+}
+
+.login-feature-carousel-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(550px);
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-feature-carousel-item.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.login-feature-carousel-item.prev {
+  transform: translateX(-550px);
+  opacity: 0;
+}
+
+.login-feature-card {
+  width: 100%;
+  max-width: 300px;
+  height: 334px;
+  background: transparent;
+  transition: transform 0.3s ease;
+}
+
+.login-feature-top-img {
+  background: none;
+}
+
+.login-feature-top-img img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.login-feature-top-img {
+  width: 100%;
+  height: auto;
+}
+
+.login-feature-content {
+  width: 300px;
+  height: 192px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  gap: 20px;
+  background: #FFF;
+}
+
+.login-feature-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-right: 20px;
+  align-items: center;
+  align-self: stretch;
+  border-bottom: 1px solid #F0F0F0;
+  background: #F7F7F7;
+  border-radius: 18px 18px 0 0;
+}
+
+.login-feature-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px 0 0 0;
+  background: #1993e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-feature-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.login-feature-title {
+  font-family: var(--FontFamily, Inter);
+  color: #111928;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 0;
+  align-items: center;
+}
+
+.login-feature-description {
+  width: 240px;
+  color: #111928;
+  font-family: var(--FontFamily, Inter);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0 auto;
+}

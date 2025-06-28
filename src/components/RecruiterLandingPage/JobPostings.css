@@ -1,0 +1,257 @@
+.job-postings {
+  padding: 100px 150px;
+}
+
+.jp-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.jp-card {
+  height: 444px;
+  width: 444px;
+  padding: 40px 0 0px 40px;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid #E6E6E6;
+  background: radial-gradient(140.13% 140.13% at 38.51% -3.04%, #7FC4FC 0%, #CDE8FE 100%);
+  overflow: hidden;
+}
+
+.jp-card-body {
+  padding: 10px 0px 0px 10px;
+  background-color: #CDE8FE;
+  border-radius: 14px;
+}
+
+.jp-card-details {
+  background-color: white;
+  border-radius: 14px;
+}
+
+.jp-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 71px;
+}
+
+.jp-logo {
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+.jp-job-title {
+  color: #333;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.jp-company {
+  color: #333;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 0;
+}
+
+.jp-job-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.jp-divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.jp-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 0 18px 30px;
+}
+
+.jp-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.jp-detail-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.jp-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #000;
+  font-family: Inter;
+  font-size: 14px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.jp-detail-item svg {
+  margin-top: 2px;
+  color: #6b7280;
+}
+
+.jp-detail-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.jp-detail-label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+}
+
+.jp-detail-value {
+  color: #4b5563;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px; 
+}
+
+.jp-detail-label1 {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  margin-right: 24px;
+}
+
+.jp-detail-label2 {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  margin-right: 24px;
+}
+
+.jp-detail-label3 {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+.jp-detail-label4 {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  margin-right: 39px;
+}
+
+.jp-detail-label5 {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  margin-right: 46px;
+}
+
+.jp-detail-label6 {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  margin-right: 14px;
+}
+
+.jp-skills-title {
+  color: #333;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.jp-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  overflow: visible;
+  max-height: none;
+  margin: 0 -4px;
+}
+
+.jp-skill-tag {
+  display: flex;
+  padding: 3px 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid #E6E6E6;
+  background: #F0F0F0;
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.jp-info {
+  width: 526px; 
+  height: 206px;
+}
+
+.jp-title {
+  align-self: stretch;
+  color: #1A1A1A;
+  font-family: var(--FontFamily, Inter);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 44px;
+}
+
+.jp-description {
+  color: #4D4D4D;
+  font-family: var(--FontFamily, Inter);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+@media (max-width: 1024px) {
+  .jp-content {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .jp-content {
+    flex-direction: column-reverse;
+  }
+  
+  .jp-info {
+    text-align: center;
+  }
+}
