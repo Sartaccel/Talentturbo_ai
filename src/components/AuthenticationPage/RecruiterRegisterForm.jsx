@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
 import './RecruiterRegisterForm.css';
 import googleIcon from '../../assets/Images/LoginPage/Googleicon.svg';
 
 const RecruiterRegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+
   const [credentials, setCredentials] = useState({
     fullName: '',
     email: '',
     mobileNumber: '',
     password: ''
   });
+
+  const [resumeFile, setResumeFile] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,15 +25,46 @@ const RecruiterRegisterForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setResumeFile(file);
+      const display = e.target.parentElement.querySelector('.file-display');
+      if (display) display.textContent = file.name;
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Register attempt with:', credentials);
-    // In a real app, you would call an API to handle authentication
+    
+    // Basic validation
+    if (!resumeFile) {
+      alert('Please upload your resume');
+      return;
+    }
+
+    try {
+      // In a real app, you would make an API call here
+      console.log('Submitting recruiter registration:', {
+        ...credentials,
+        resume: resumeFile.name
+      });
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Redirect to login or dashboard after successful registration
+      navigate('/recruiter/login');
+      
+    } catch (error) {
+      console.error('Registration failed:', error);
+      alert('Registration failed. Please try again.');
+    }
   };
 
   return (
     <div className="register-form-container">
-      <h2 className="register-title">Register</h2>
+      <h2 className="register-title">Recruiter Register</h2>
 
       <div className="register-alternative">
         <div className="register-auth-options">
@@ -111,13 +147,13 @@ const RecruiterRegisterForm = () => {
               type="file" 
               id="resume-upload" 
               className="rf-file-input" 
-              onChange={(e) => {
-                const fileName = e.target.files[0]?.name || 'No file selected';
-                const display = e.target.parentElement.querySelector('.file-display');
-                if (display) display.textContent = fileName;
-              }}
+              onChange={handleFileChange}
+              accept=".pdf,.doc,.docx"
+              required
             />
-            <span className="file-display">No file selected</span>
+            <span className="file-display">
+              {resumeFile ? resumeFile.name : 'No file selected'}
+            </span>
           </div>
         </div>
 
@@ -133,7 +169,7 @@ const RecruiterRegisterForm = () => {
       </div>
 
       <div className="register-signup-link">
-        <p>Existing user? <a href="login">Login</a></p>
+        <p>Already have an account? <a href="/recruiter/login">Login</a></p>
       </div>
     </div>
   );

@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import './RegisterForm.css';
 import googleIcon from '../../assets/Images/LoginPage/Googleicon.svg';
+import { useNavigate } from 'react-router-dom';
+import CandidateVerification from './CandidateVerification';
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const [resumeFile, setResumeFile] = useState(null);
+  const navigate = useNavigate();
+
   const [credentials, setCredentials] = useState({
     fullName: '',
     email: '',
@@ -20,11 +27,58 @@ const RegisterForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Register attempt with:', credentials);
-    // In a real app, you would call an API to handle authentication
-  };
+  const handleFileChange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        setResumeFile(file);
+        const display = e.target.parentElement.querySelector('.file-display');
+        if (display) display.textContent = file.name;
+      }
+    };
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      
+      // Basic validation
+      if (!resumeFile) {
+        alert('Please upload your resume');
+        return;
+      }
+  
+      try {
+        // In a real app, you would make an API call here
+        console.log('Submitting registration:', {
+          ...credentials,
+          resume: resumeFile.name
+        });
+  
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // On successful registration
+        setUserData({
+          email: credentials.email,
+          mobileNumber: credentials.mobileNumber
+        });
+        setIsRegistered(true);
+      } catch (error) {
+        console.error('Registration failed:', error);
+        alert('Registration failed. Please try again.');
+      }
+    };
+  
+    // If registration is successful, show verification
+    if (isRegistered) {
+      return (
+        <div className="register-form-container">
+          <CandidateVerification 
+            email={userData.email}
+            mobileNumber={userData.mobileNumber}
+            userType="candidate"
+          />
+        </div>
+      );
+    }
 
   return (
     <div className="register-form-container">
@@ -111,13 +165,13 @@ const RegisterForm = () => {
               type="file" 
               id="resume-upload" 
               className="rf-file-input" 
-              onChange={(e) => {
-                const fileName = e.target.files[0]?.name || 'No file selected';
-                const display = e.target.parentElement.querySelector('.file-display');
-                if (display) display.textContent = fileName;
-              }}
+              onChange={handleFileChange}
+              accept=".pdf,.doc,.docx"
+              required
             />
-            <span className="file-display">No file selected</span>
+            <span className="file-display">
+              {resumeFile ? resumeFile.name : 'No file selected'}
+            </span>
           </div>
         </div>
 

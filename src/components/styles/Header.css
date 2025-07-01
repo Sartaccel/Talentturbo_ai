@@ -322,7 +322,7 @@ body > div {
 }
 
 .nav-link:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
   color: #191919 !important;
 }
 
